@@ -4,7 +4,7 @@ import "./Style.css";
 export class Calculator extends Component {
 
     MonthDay = (year, month) => {
-        month=month+1;
+        month = month + 1;
         if (month === 2) {
             if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
                 return 29;
@@ -12,14 +12,14 @@ export class Calculator extends Component {
                 return 28;
             }
         }
-    
+
         if (month === 4 || month === 6 || month === 9 || month === 11) {
             return 30;
         }
-    
+
         return 31;
     }
-    
+
 
     CalculateAge = () => {
         const curDate = new Date();
@@ -37,14 +37,19 @@ export class Calculator extends Component {
             else {
                 let ageInYears = curDate.getFullYear() - dob.getFullYear();
                 let ageInMonths = curDate.getMonth() - dob.getMonth();
-                if (ageInMonths < 0) {
-                    ageInYears--;
+                console.log(ageInMonths);
+                if (ageInMonths <= 0) {
+                    if (ageInYears != 0) {
+                        ageInYears--;
+                    }
                     ageInMonths = ageInMonths + 12;
                 }
                 let ageInDays = curDate.getDate() - dob.getDate();
-                if (ageInDays < 0) {
-                    ageInMonths--;
-                    ageInDays =ageInDays+this.MonthDay(dob.getFullYear(),dob.getMonth());
+                if (ageInDays <= 0) {
+                    if (ageInMonths != 0) {
+                        ageInMonths--;
+                    }
+                    ageInDays = ageInDays + 30;
                 }
                 document.getElementById("display").innerText = `${ageInYears} years ${ageInMonths} months ${ageInDays} days`;
             }
@@ -52,13 +57,18 @@ export class Calculator extends Component {
         else {
             let ageInYears = curDate.getFullYear() - dob.getFullYear();
             let ageInMonths = curDate.getMonth() - dob.getMonth();
-            if (ageInMonths < 0) {
-                ageInYears--;
+            console.log(ageInMonths);
+            if (ageInMonths <= 0) {
+                if (ageInYears != 0) {
+                    ageInYears--;
+                }
                 ageInMonths = ageInMonths + 12;
             }
             let ageInDays = curDate.getDate() - dob.getDate();
-            if (ageInDays < 0) {
-                ageInMonths--;
+            if (ageInDays <= 0) {
+                if (ageInMonths != 0) {
+                    ageInMonths--;
+                }
                 ageInDays = ageInDays + 30;
             }
             document.getElementById("display").innerText = `${ageInYears} years ${ageInMonths} months ${ageInDays} days`;
