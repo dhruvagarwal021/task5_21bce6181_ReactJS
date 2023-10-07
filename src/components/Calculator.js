@@ -42,14 +42,18 @@ export class Calculator extends Component {
                     if (ageInYears != 0) {
                         ageInYears--;
                     }
-                    ageInMonths = ageInMonths + 12;
+                    if (ageInMonths != 0) {
+                        ageInMonths = ageInMonths + 12;
+                    }
                 }
                 let ageInDays = curDate.getDate() - dob.getDate();
                 if (ageInDays <= 0) {
                     if (ageInMonths != 0) {
                         ageInMonths--;
                     }
-                    ageInDays = ageInDays + 30;
+                    if (ageInDays != 0) {
+                        ageInDays = ageInDays + 30;
+                    }
                 }
                 document.getElementById("display").innerText = `${ageInYears} years ${ageInMonths} months ${ageInDays} days`;
             }
@@ -62,14 +66,18 @@ export class Calculator extends Component {
                 if (ageInYears != 0) {
                     ageInYears--;
                 }
-                ageInMonths = ageInMonths + 12;
+                if (ageInMonths != 0) {
+                    ageInMonths = ageInMonths + 12;
+                }
             }
             let ageInDays = curDate.getDate() - dob.getDate();
             if (ageInDays <= 0) {
                 if (ageInMonths != 0) {
                     ageInMonths--;
                 }
-                ageInDays = ageInDays + 30;
+                if (ageInDays != 0) {
+                    ageInDays = ageInDays + 30;
+                }
             }
             document.getElementById("display").innerText = `${ageInYears} years ${ageInMonths} months ${ageInDays} days`;
         }
